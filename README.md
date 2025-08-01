@@ -35,15 +35,15 @@ A modern, production-ready church management system built with React, Vite, Type
 ### Installation
 
 1. **Clone the repository**
-   \`\`\`bash
+   ```bash
    git clone <repository-url>
    cd tithespace-react-vite
-   \`\`\`
+   ```
 
 2. **Install dependencies**
-   \`\`\`bash
+   ```bash
    npm install
-   \`\`\`
+   ```
 
 3. **Set up Firebase**
    - Create a new Firebase project at [Firebase Console](https://console.firebase.google.com)
@@ -54,27 +54,25 @@ A modern, production-ready church management system built with React, Vite, Type
 4. **Environment Variables**
    - Copy `.env.example` to `.env`
    - Fill in your Firebase configuration:
-   \`\`\`env
+   ```env
    VITE_FIREBASE_API_KEY=your-api-key
    VITE_FIREBASE_AUTH_DOMAIN=your-project-id.firebaseapp.com
    VITE_FIREBASE_PROJECT_ID=your-project-id
    VITE_FIREBASE_STORAGE_BUCKET=your-project-id.appspot.com
    VITE_FIREBASE_MESSAGING_SENDER_ID=your-messaging-sender-id
    VITE_FIREBASE_APP_ID=your-app-id
-   \`\`\`
+   ```
 
 5. **Start the development server**
-   \`\`\`bash
+   ```bash
    npm run dev
-   \`\`\`
+   ```
 
 6. **Build for production**
-   \`\`\`bash
+   ```bash
    npm run build
-   \`\`\`
+   ```
 
-
-\`\`\`
 
 ## Usage
 
@@ -88,24 +86,24 @@ A modern, production-ready church management system built with React, Vite, Type
 
 ## Project Structure
 
-\`\`\`
-src/
-├── components/          # React components
-│   ├── ui/             # Reusable UI components
-│   ├── Dashboard.tsx   # Main dashboard component
-│   ├── Login.tsx       # Login form
-│   ├── Signup.tsx      # Registration form
-│   └── ...
-├── contexts/           # React contexts
-│   └── AuthContext.tsx # Authentication context
-├── lib/                # Utility libraries
-│   ├── firebase.ts     # Firebase configuration
-│   ├── db.ts          # Database operations
-│   └── utils.ts       # Utility functions
-├── types/              # TypeScript type definitions
-│   └── index.ts       # Main types
-└── main.tsx           # Application entry point
-\`\`\`
+```
+   src/
+   ├── components/          # React components
+   │   ├── ui/             # Reusable UI components
+   │   ├── Dashboard.tsx   # Main dashboard component
+   │   ├── Login.tsx       # Login form
+   │   ├── Signup.tsx      # Registration form
+   │   └── ...
+   ├── contexts/           # React contexts
+   │   └── AuthContext.tsx # Authentication context
+   ├── lib/                # Utility libraries
+   │   ├── firebase.ts     # Firebase configuration
+   │   ├── db.ts          # Database operations
+   │   └── utils.ts       # Utility functions
+   ├── types/              # TypeScript type definitions
+   │   └── index.ts       # Main types
+   └── main.tsx           # Application entry point
+```
 
 ## Contributing
 
