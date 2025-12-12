@@ -4,17 +4,14 @@ import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
-import { Link, useNavigate } from "react-router-dom"
 import { Eye, EyeOff, Heart, ArrowRight, Shield } from "lucide-react"
-import toast from "react-hot-toast"
-import { useAuth } from "@/contexts/AuthContext"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
+import { Link } from "react-router-dom"
 
-// Form validation schema
 const loginSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
   password: z.string().min(6, "Password must be at least 6 characters"),
@@ -23,11 +20,9 @@ const loginSchema = z.object({
 
 type LoginFormValues = z.infer<typeof loginSchema>
 
-export default function Login() {
+export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-  const { login } = useAuth()
-  const navigate = useNavigate()
 
   const {
     register,
@@ -35,34 +30,12 @@ export default function Login() {
     formState: { errors },
   } = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
-    defaultValues: {
-      email: "",
-      password: "",
-      rememberMe: false,
-    },
   })
 
   const onSubmit = async (data: LoginFormValues) => {
     setIsLoading(true)
-
-    try {
-      await login(data.email, data.password)
-      toast.success("Successfully logged in!")
-      navigate("/dashboard")
-    } catch (error: any) {
-      console.error("Login error:", error)
-
-      // Handle specific Firebase auth errors
-      if (error.code === "auth/user-not-found" || error.code === "auth/wrong-password") {
-        toast.error("Invalid email or password")
-      } else if (error.code === "auth/too-many-requests") {
-        toast.error("Too many failed login attempts. Please try again later")
-      } else {
-        toast.error("Failed to log in. Please try again")
-      }
-    } finally {
-      setIsLoading(false)
-    }
+    // Handle login logic here
+    setTimeout(() => setIsLoading(false), 2000)
   }
 
   return (
@@ -83,15 +56,14 @@ export default function Login() {
               <span className="text-sm text-slate-500 font-medium">Church Management System</span>
             </div>
           </div>
-          <div className="space-y-2">
-            <CardTitle className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-              Welcome Back
-            </CardTitle>
-            <CardDescription className="text-slate-600 text-base">
-              Sign in to your church management account
-            </CardDescription>
-          </div>
+          <CardTitle className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+            Welcome Back
+          </CardTitle>
+          <CardDescription className="text-slate-600 text-base">
+            Sign in to your church management account
+          </CardDescription>
         </CardHeader>
+        
         <CardContent className="space-y-6">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
             <div className="space-y-2">
@@ -109,6 +81,7 @@ export default function Login() {
               />
               {errors.email && <p className="text-sm text-red-500 mt-1">{errors.email.message}</p>}
             </div>
+
             <div className="space-y-2">
               <Label htmlFor="password" className="text-slate-700 font-medium">
                 Password
@@ -139,6 +112,7 @@ export default function Login() {
               </div>
               {errors.password && <p className="text-sm text-red-500 mt-1">{errors.password.message}</p>}
             </div>
+
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
                 <Checkbox id="rememberMe" className="rounded-md" {...register("rememberMe")} />
@@ -146,10 +120,11 @@ export default function Login() {
                   Remember me
                 </Label>
               </div>
-              <Link to="/forgot-password" className="text-sm text-blue-600 hover:text-blue-700 font-medium">
+              <Button variant="link" className="px-0 text-sm text-blue-600 hover:text-blue-700 font-medium">
                 Forgot password?
-              </Link>
+              </Button>
             </div>
+
             <Button
               type="submit"
               className="w-full h-12 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold rounded-xl shadow-lg transition-all duration-200 hover:shadow-xl"
@@ -183,10 +158,10 @@ export default function Login() {
             Your data is protected with enterprise-grade security
           </div>
 
-          <div className="text-center pt-4 border-t border-slate-100">
+          <div className="text-center">
             <p className="text-sm text-slate-600">
-              {"Don't have an account? "}
-              <Link to="/signup" className="text-blue-600 hover:text-blue-700 font-semibold">
+              Don't have an account?{" "}
+              <Link to="/auth/signup" className="text-blue-600 font-semibold hover:text-blue-700 transition-colors">
                 Sign up here
               </Link>
             </p>
@@ -196,3 +171,9 @@ export default function Login() {
     </div>
   )
 }
+
+
+
+
+
+

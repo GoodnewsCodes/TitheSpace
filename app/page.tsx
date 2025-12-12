@@ -1,4 +1,4 @@
-import EnhancedNigerianChurchDashboard from "../dashboard-enhanced"
+import EnhancedNigerianChurchDashboard from "../dashboard"
 
 export default function Page() {
   return <EnhancedNigerianChurchDashboard />

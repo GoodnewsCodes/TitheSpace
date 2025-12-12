@@ -134,7 +134,7 @@ function DashboardOverview() {
       totalExpenses,
       netIncome,
       growth,
-      target: 500000, // Example target
+      target: 50000, // Example target
     }
   }
 

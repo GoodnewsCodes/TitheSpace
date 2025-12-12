@@ -5,13 +5,15 @@ import type React from "react"
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"
 import { AuthProvider, useAuth } from "./contexts/AuthContext"
 import { ToastProvider } from "./components/ui/toast"
-import Login from "./components/Login"
-import Signup from "./components/Signup"
+import LoginForm from "@/components/auth/LoginForm"
+import SignupForm from "@/components/auth/SignupForm"
 import Dashboard from "./components/Dashboard"
 import ForgotPassword from "./components/ForgotPassword"
 import ChurchSetup from "./components/ChurchSetup"
 import LoadingScreen from "./components/LoadingScreen"
 import { ThemeProvider } from "@/components/theme-provider"
+import Login from "@/auth/login"
+import Signup from "@/auth/signup"
 
 // Protected route component
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
@@ -73,5 +75,7 @@ function App() {
 }
 
 export default App
+
+
 
 

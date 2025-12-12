@@ -1,7 +1,8 @@
 @layer base {
   :root {
-    /* ... existing variables ... */
-
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    
     /* Sidebar variables */
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -14,8 +15,9 @@
   }
 
   .dark {
-    /* ... existing dark variables ... */
-
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    
     /* Dark sidebar variables */
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -27,3 +29,4 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
+
